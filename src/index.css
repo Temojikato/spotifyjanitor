@@ -1,13 +1,23 @@
+/* src/index.css */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: #121212; /* Global background black */
+  color: white;
+  font-family: 'Roboto', sans-serif;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/* For MUI outlined TextField when focused */
+.text-field .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #1ED760 !important;
+  box-shadow: 0 0 8px 2px rgba(30, 215, 96, 0.5);
+}
+
+.button-green {
+  background-color: #1ED760 !important;
 }

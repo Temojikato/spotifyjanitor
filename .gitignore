@@ -19,6 +19,10 @@
 .env.production.local
 .env
 
+#usual, but for the sake of you building it locally commented out
+#.env.development
+#.env.production
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*

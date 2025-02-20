@@ -46,7 +46,6 @@ const SavedTracksPage: React.FC = () => {
   const fetchTracks = async (): Promise<void> => {
     setRefreshing(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 5000));
       const data = await getUserSavedTracks();
       const formatted = data.items.map((item: any) => ({
         id: item.track.id,

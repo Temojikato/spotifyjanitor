@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Callback from './pages/Callback';
 import SavedTracksPage from './pages/SavedTracksPage';
-import SearchPage from './pages/SearchPage';
+import SearchModal from './components/SearchModal';
 import ProtectedRoute from './components/ProtectedRoute';
 import HomeRedirect from './components/HomeRedirect';
 
@@ -25,7 +25,7 @@ const App: React.FC = () => {
           path="/search"
           element={
             <ProtectedRoute>
-              <SearchPage />
+              <SearchModal />
             </ProtectedRoute>
           }
         />

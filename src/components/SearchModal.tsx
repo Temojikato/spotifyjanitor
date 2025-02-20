@@ -9,7 +9,7 @@ interface Track {
   albumArt: string;
 }
 
-const SearchPage: React.FC = () => {
+const SearchModal: React.FC = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Track[]>([]);
   const [message, setMessage] = useState('');
@@ -26,7 +26,6 @@ const SearchPage: React.FC = () => {
       setResults(formatted);
       setMessage('');
     } catch (error) {
-      console.error(error);
       setMessage('Search failed, please try again.');
     }
   };
@@ -36,7 +35,6 @@ const SearchPage: React.FC = () => {
       await saveUserTrack(trackId);
       setMessage('Track saved to your favorites!');
     } catch (error) {
-      console.error(error);
       setMessage('Failed to save track.');
     }
   };
@@ -109,4 +107,4 @@ const SearchPage: React.FC = () => {
   );
 };
 
-export default SearchPage;
+export default SearchModal;

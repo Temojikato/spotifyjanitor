@@ -41,7 +41,7 @@ const MobileTrackItem: React.FC<MobileTrackItemProps> = ({ id, title, artist, al
   });
 
   return (
-    <Box ref={containerRef} sx={{ position: 'relative', mb: 2 }}>
+    <Box data-testid="container-div" ref={containerRef} sx={{ position: 'relative', mb: 2 }}>
       <Box
         sx={{
           position: 'absolute',

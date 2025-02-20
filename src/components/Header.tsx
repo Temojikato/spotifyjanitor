@@ -32,8 +32,8 @@ const Header: React.FC = () => {
     >
       <Toolbar sx={{ fontFamily: 'Roboto, sans-serif' }}>
         {showBackArrow && (
-          <IconButton onClick={handleBack} color="inherit" sx={{ mr: 1 }}>
-            <ArrowBackIcon />
+          <IconButton aria-label="Back" onClick={handleBack} color="inherit" sx={{ mr: 1 }}>
+            <ArrowBackIcon aria-hidden="true" data-testid="ArrowBackIcon"/>
           </IconButton>
         )}
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>

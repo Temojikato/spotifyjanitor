@@ -58,7 +58,7 @@ const TableTrackItem: React.FC<TableTrackItemProps> = ({
         sx={{ p: 0, m: 0, position: 'relative', overflow: 'hidden', border: 'none' }}
       >
         <Box sx={{ mb: 2 }}>
-          <div ref={containerRef} style={{ position: 'relative', width: '100%', height: '72px' }}>
+          <div data-testid="container-div" ref={containerRef} style={{ position: 'relative', width: '100%', height: '72px' }}>
             <Box
               sx={{
                 position: 'absolute',

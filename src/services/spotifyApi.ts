@@ -5,7 +5,6 @@ const API_BASE = 'https://api.spotify.com/v1';
 const getAccessToken = (): string | null => localStorage.getItem('access_token');
 
 export const getUserSavedTracks = async (force?: boolean): Promise<any> => {
-  await new Promise(resolve => setTimeout(resolve, 1000));
   const cachedTracks = await localforage.getItem('savedTracks');
   if (cachedTracks && !force) return cachedTracks;
   const token = getAccessToken();

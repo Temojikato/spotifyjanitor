@@ -38,8 +38,10 @@ During development, I faced challenges with ES module syntax and Babel configura
 
 Spotify Janitor minimizes unnecessary API calls by using an offline data store to cache data once it is fetched; however, a refresh operation always pulls fresh data from the API. The app is deployed at https://spotifyjanitor.web.app so you can experience its full functionality without any local setup if you prefer.
 
-
-
+  
+  
+    
+      
 ### Dutch Version
 
 # Spotify Janitor

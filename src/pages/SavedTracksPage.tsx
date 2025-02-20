@@ -38,7 +38,6 @@ const SavedTracksPage: React.FC = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [filteredTracks, setFilteredTracks] = useState<Track[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [undoTrack, setUndoTrack] = useState<Track | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const isMobile = useMediaQuery('(max-width:600px)');
@@ -46,7 +45,7 @@ const SavedTracksPage: React.FC = () => {
   const fetchTracks = async (): Promise<void> => {
     setRefreshing(true);
     try {
-      const data = await getUserSavedTracks();
+      const data = await getUserSavedTracks(true);
       const formatted = data.items.map((item: any) => ({
         id: item.track.id,
         title: item.track.name,
@@ -87,7 +86,6 @@ const SavedTracksPage: React.FC = () => {
     if (!trackToRemove) return;
     setTracks(prev => prev.filter(t => t.id !== trackId));
     setFilteredTracks(prev => prev.filter(t => t.id !== trackId));
-    setUndoTrack(trackToRemove);
     try {
       await removeUserSavedTrack(trackId);
       toast.info(({ closeToast }: { closeToast: () => void }) => (
@@ -110,7 +108,6 @@ const SavedTracksPage: React.FC = () => {
       setTracks(prev => [track, ...prev]);
       setFilteredTracks(prev => [track, ...prev]);
       toast.success(`Re-added "${track.title}"`);
-      setUndoTrack(prev => (prev?.id === track.id ? null : prev));
     } catch (error) {
       console.error('Error re-adding track', error);
       toast.error('Error re-adding track');
@@ -157,7 +154,7 @@ const SavedTracksPage: React.FC = () => {
 
   return (
     <Layout>
-      <PullToRefresh onRefresh={fetchTracks}>
+      <PullToRefresh onRefresh={(fetchTracks)}>
         <Box sx={{ p: 2 }}>
           {isMobile ? (
             <>
@@ -202,7 +199,12 @@ const SavedTracksPage: React.FC = () => {
               <CircularProgress />
             </Box>
           )}
-          {isMobile ? renderListView() : renderTableView()}
+
+          {!refreshing && (
+            <>
+              {isMobile ? renderListView() : renderTableView()}
+            </>
+          )}
         </Box>
       </PullToRefresh>
       <Fab
